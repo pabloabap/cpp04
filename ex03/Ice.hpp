@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabad-ap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 11:46:21 by pabad-ap          #+#    #+#             */
-/*   Updated: 2025/01/07 12:48:51 by pabad-ap         ###   ########.fr       */
+/*   Created: 2025/01/08 18:58:05 by pabad-ap          #+#    #+#             */
+/*   Updated: 2025/01/08 19:05:53 by pabad-ap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_CLASS_H
-# define DOG_CLASS_H
-# include "Animal.hpp"
+#include "AMateria.hpp"
 
-class Dog: public Animal
+class	Ice: public AMateria
 {
-	public:
-		Dog( void );
-		Dog( Dog const &src );
-		~Dog( void );
-		
-		Dog	&operator=( Dog const &src );
-		void	makeSound( void ) const;
-};
-
-#endif
+	Ice( void );
+	Ice( Ice const &src );
+	~Ice( void );
+	
+	Ice	&operator=( Ice const &src )
+	
+	Ice	*clone() const;
+	void	use( ICharacter &target );
+	
+}
