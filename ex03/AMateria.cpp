@@ -13,14 +13,13 @@
 #include <string>
 #include <iostream>
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
 
 AMateria::AMateria( void ): _type("materia")
 {
 	std::cout << "AMateria - Default constructor" << std::endl;
 }
 
-AMateria::AMateria( AMateria const &src ): _type(src.getType())
+AMateria::AMateria( AMateria const &src ): _type(src._type())
 {
 	std::cout << "AMateria - Copy constructor" << std::endl;
 }

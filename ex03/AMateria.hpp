@@ -31,7 +31,6 @@ class	AMateria
 		
 		virtual		AMateria* clone() const = 0;
 		virtual void	use(ICharacter &target);
-		void		setType( std::string const &type );
 };
 
 #endif

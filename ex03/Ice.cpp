@@ -19,10 +19,9 @@ Ice::Ice( void ): AMateria()
 	this->_type = "ice";
 }
 
-Ice::Ice( Ice const &src ):AMateria(src)
+Ice::Ice( Ice const &src ): AMateria(src)
 {
 	std::cout << "Ice - Copy constructor" << std::endl;
-	*this = src;
 }
 
 Ice::~Ice( void )
@@ -35,15 +34,16 @@ Ice	&Ice::operator=( Ice const &src )
 	std::cout << "Ice - Copy assignment operator" << std::endl;
 	
 	if ( this != &src )
-		this->_type = src.getType():
+		this->_type = src._type;
 	return ( *this );
 }
 
-/* PENDIENTE DE IMPLEMENTAR 
-virtual		AMateria* clone() const = 0;
-virtual void	use(ICharacter &target);
-void		setType( std::string const &type );
+Ice	*Ice::clone() const
+{
+	return ( new Ice( *this ));
+}
 
-*/
-
-
+void	Ice::use(ICharacter &target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

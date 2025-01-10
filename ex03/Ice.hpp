@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#ifndef ICE_CLASS_HPP
+# define ICE_CLASS_HPP
+
+# include "AMateria.hpp"
 
 class	Ice: public AMateria
 {
@@ -18,9 +21,10 @@ class	Ice: public AMateria
 	Ice( Ice const &src );
 	~Ice( void );
 	
-	Ice	&operator=( Ice const &src )
+	Ice	&operator=( Ice const &src );
 	
 	Ice	*clone() const;
 	void	use( ICharacter &target );
-	
-}
+};
+
+#endif

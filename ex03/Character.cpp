@@ -44,6 +44,14 @@ Character::Character( Character const &src): _name(src._name)
 Character::~Character( void )
 {
 	std::cout << "Character - Default destructor called" << std::endl;
+	for ( int i = 0; i < sizeof(this->_inventory) / sizeof(AMateria *); i++)
+	{
+		if (this->_inventory[i] != NULL)
+		{
+			delete( this->_inventory[i] );
+			this->_inventory[i] = NULL;
+		}
+	}	
 }
 
 Character	&Character::operator=(Character const &src)
@@ -55,8 +63,14 @@ Character	&Character::operator=(Character const &src)
 		this->_storageCapacity = src._storageCapacity;
 		for ( int i = 0; i < sizeof(this->_inventory) / sizeof(AMateria *); i++)
 		{
-			if (this->_invetory[i] != NULL)
+			if (this->_inventory[i] != NULL)
+			{
 				delete( this->_inventory[i] );
+				this->_inventory[i] = NULL;
+			}
+		}	
+		for ( int i = 0; i < sizeof(this->_inventory) / sizeof(AMateria *); i++)
+		{
 			if (src._inventory[i])
 				this->_inventory[i] = src._inventory[i]->clone();
 		}
@@ -69,26 +83,25 @@ std::string const	&Character::getName( void ) const
 	return ( this->_name );	
 }
 
-void			Character::setName( std::string name )
-{
-	this->_name = name;
-}
-
 virtual void			Character::equip(AMateria *m)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < this->_storageCapacity; i++)
 	{
 		if ( NULL == this->_inventory[i] )
+			this->_inventory[i] = m;
 	}
 }
 
 virtual void			Character::unequip(int idx)
 {
-
+	if ( idx >= 0 && idx < this->_storageCapacity )
+		this->_inventory[idx] = NULL;
 }
 
 virtual void			Character::use(int idx, ICharacter &target)
 {
+	if ( idx >= 0 && idx < this->_storageCapacity && this->_inventory[idx] )
+		this->_inventory[idx]->use( target );
 
 }
 

@@ -22,19 +22,28 @@ Cure::Cure( void ): AMateria()
 Cure::Cure( Cure const &src ):AMateria(src)
 {
 	std::cout << "Cure - Copy constructor" << std::endl;
-	*this = src;
 }
 
-Materia::~Cure( void )
+Cure::~Cure( void )
 {
 	std::cout << "Cure - Default destructor" << std::endl;
 }
 
-Amateria	&Cure::operator=( Cure const &src )
+Cure	&Cure::operator=( Cure const &src )
 {
 	std::cout << "Cure - Copy assignment operator" << std::endl;
 	
 	if ( this != &src )
-		this->_type = src.getType():
+		this->_type = src._type;
 	return ( *this );
+}
+
+Cure	*Cure::clone() const
+{
+	return ( new Cure( *this ));
+}
+
+void	Cure::use(ICharacter &target)
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

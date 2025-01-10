@@ -22,7 +22,6 @@ class Character: public ICharacter
 	private:
 		std::string	_name;
 		AMateria	*_inventory[4];
-		AMateria	*_thrownInventory[4];
 		int		_storageCapacity;
 	public:
 		Character( void );
@@ -36,7 +35,6 @@ class Character: public ICharacter
 		void			equip(AMateria *m);
 		void			unequip(int idx);
 		void			use(int idx, ICharacter &target);
-		void			setName( std::string name);		
 }
 
 #endif

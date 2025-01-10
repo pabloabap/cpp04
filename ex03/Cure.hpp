@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#ifndef CURE_CLASS_HPP
+# define CURE_CLASS_HPP
+
+# include "AMateria.hpp"
 
 class	Cure: public AMateria
 {
@@ -18,9 +21,10 @@ class	Cure: public AMateria
 	Cure( Cure const &src );
 	~Cure( void );
 	
-	Cure	&operator=( Cure const &src )
+	Cure	&operator=( Cure const &src );
 	
 	Cure	*clone() const;
 	void	use( ICharacter &target );
-	
-}
+};
+
+#endif
