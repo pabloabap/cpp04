@@ -6,7 +6,7 @@
 /*   By: pabad-ap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 12:35:10 by pabad-ap          #+#    #+#             */
-/*   Updated: 2025/01/07 20:46:00 by pabad-ap         ###   ########.fr       */
+/*   Updated: 2025/01/07 20:32:15 by pabad-ap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ int main (void)
 			animals[i] = new Cat();
 	}
 	delete animals[9];
+	animals[0]->getBrain().setIdea("Dog Idea", 0); // Comment this line to option B compilation
 	animals[9] = new Dog(*(dynamic_cast<Dog*>(animals[0])));
+	delete animals[0]; // Comment this line to option B compilation
+	/*
 	std::cout << "---DEFAULT DOG 0, IDEA 0---\n" \
 		<< animals[0]->getBrain().getIdea(0) << std::endl;
 	animals[0]->getBrain().setIdea("Dog Idea", 0);
 	std::cout << "---DOG 0, IDEA 0 AFTER SET---\n" \
 		<< animals[0]->getBrain().getIdea(0) << std::endl;
+	*/
 	std::cout << "---COPIEAD DOG BEFORE SET---\n" \
 		<< animals[9]->getBrain().getIdea(0) << std::endl;
 	std::cout  << "--- DEFAULT CAT 8, IDEA 0---\n" \
@@ -45,6 +49,7 @@ int main (void)
 		<< animals[8]->getBrain().getIdea(0) << std::endl;
 	std::cout << "---COPIEAD CAT AFTER SET---\n" \
 		<< animals[9]->getBrain().getIdea(0) << std::endl;
+	animals[0] = new Cat(*(dynamic_cast<Cat*>(animals[9])));;
 	for ( int i = 0; i < 10; i++)
 	{
 		delete animals[i];

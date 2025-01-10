@@ -27,12 +27,13 @@ int main (void)
 			animals[i] = new Cat();
 	}
 	delete animals[9];
-	animals[0]->getBrain().setIdea("Dog Idea", 0);
+	animals[0]->getBrain().setIdea("Dog Idea", 0); // Comment this line to option B compilations
 	animals[9] = new Dog(*(dynamic_cast<Dog*>(animals[0])));
-	delete animals[0];
+	delete animals[0]; // Comment this line to option B compilations
 	/*
 	std::cout << "---DEFAULT DOG 0, IDEA 0---\n" \
 		<< animals[0]->getBrain().getIdea(0) << std::endl;
+	animals[0]->getBrain().setIdea("Dog Idea", 0);
 	std::cout << "---DOG 0, IDEA 0 AFTER SET---\n" \
 		<< animals[0]->getBrain().getIdea(0) << std::endl;
 	*/
